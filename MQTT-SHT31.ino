@@ -91,6 +91,13 @@ void setup() {
 
 void loop() {
   
+  while(WiFi.status() != WL_CONNECTED){
+    Serial.println("Reconnecting to WiFi...");
+    WiFi.disconnect();
+    WiFi.reconnect();
+    delay(1000);
+  }
+  
   float t = sht31.readTemperature();
   float h = sht31.readHumidity(); 
 
